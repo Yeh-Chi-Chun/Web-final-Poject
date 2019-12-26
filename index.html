@@ -42,6 +42,10 @@
           window.location.href = "Web mode2.html";
         }
 
+        if (e.srcElement.id == 'obj3' || e.srcElement.id == 'doc') {
+          window.location.href = "https://docs.google.com/presentation/d/1E6YX85frGuIFB7qPZe9aDK-ANJkbbjg2/edit#slide=id.p1";
+        }
+
       })
     }
   });
@@ -99,6 +103,10 @@
           text-geometry="value:Mode-2; font: #exoFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12; size: 1; height: 0;"
           material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #pink;"></a-entity>
 
+        <a-entity id="doc" rotation="0 0 3" position="5 1 0"
+          text-geometry="value:document; font: #exoFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12; size: 0.5; height: 0;"
+          material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #pink;"></a-entity>
+
         <a-entity rotation="0 180 5" position="5 5 15"
           text-geometry="value:Thanks For Playing; font: #exoFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12; size: 1; height: 0;"
           material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #pink;"></a-entity>
@@ -112,6 +120,10 @@
         </a-icosahedron>
 
         <a-icosahedron id="obj2" color="#ff5c33" radius="1" position="-3 3.5 0" rotation="0 360 0" scale="0.5 0.5 0.5">
+          <a-animation attribute="rotation" to="0 0 360" repeat="indefinite" easing="linear" dur="4800"></a-animation>
+        </a-icosahedron>
+
+        <a-icosahedron id="obj3" color="#ff9933" radius="0.5" position="4.5 1.1 0" rotation="0 360 0" scale="0.5 0.5 0.5">
           <a-animation attribute="rotation" to="0 0 360" repeat="indefinite" easing="linear" dur="4800"></a-animation>
         </a-icosahedron>
 
