@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Test Agility Traning Game </title>
+  <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+  <script
+    src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
+</head>
+
+<script>
+
+  AFRAME.registerComponent('a-frame-to-html', {
+    init: function () {
+
+      var scene = document.querySelector('a-scene');
+      var BGM = scene.querySelector('#bgm');
+      var box1 = document.getElementById('obj1');
+      var box2 = document.getElementById('obj2');
+      var box3 = document.getElementById('obj3');
+      var box4 = document.getElementById('obj4');
+      var box6 = document.getElementById('obj6');
+      var box7 = document.getElementById('obj7');
+      var stage = document.getElementById('stage');
+      var speed = scene.querySelectorAll('.speed');
+      var speed2 = scene.querySelectorAll('.speed2');
+      var speed6 = scene.querySelectorAll('.speed6');
+      var speed7 = scene.querySelectorAll('.speed7');
+      var Csound = document.querySelector('[sound]');//抓點擊時音效的物件
+      var Stagesound = document.querySelector('#stagesound');//抓進入下一關時音效的物件
+      var changesound = document.querySelector('#changesound');//抓進入下一關時音效的物件
+      Csound.components.sound.stopSound();
+
+      el = this.el;
+
+      this.el.addEventListener('click', (e) => {
+        if (e.srcElement.id == 'obj1' || e.srcElement.id == 'mode1') {
+          window.location.href = "Web mode1.html";
+        }
+
+        if (e.srcElement.id == 'obj2' || e.srcElement.id == 'mode2') {
+          window.location.href = "Web mode2.html";
+        }
+
+      })
+    }
+  });
+
+</script>
+
+
+<body>
+
+  <a-scene a-frame-to-html>
+    <a-assets>
+      <img id="pink" src="https://img.gs/bbdkhfbzkk/stretch/http://i.imgur.com/1hyyIUi.jpg" crossorigin="anonymous" />
+      <img src="https://img.gs/bbdkhfbzkk/stretch/https://i.imgur.com/25P1geh.png" id="grid" crossorigin="anonymous">
+      <img src="https://img.gs/bbdkhfbzkk/2048x1024,stretch/http://i.imgur.com/WMNH2OF.jpg" id="chrome"
+        crossorigin="anonymous">
+      <img id="sky" src="https://img.gs/bbdkhfbzkk/2048x2048,stretch/http://i.imgur.com/WqlqEkq.jpg"
+        crossorigin="anonymous" />
+      <a-asset-item id="dawningFont"
+        src="https://cdn.glitch.com/c719c986-c0c5-48b8-967c-3cd8b8aa17f3%2FdawningOfANewDayRegular.typeface.json?1490305922844">
+      </a-asset-item>
+      <a-asset-item id="exoFont"
+        src="https://cdn.glitch.com/c719c986-c0c5-48b8-967c-3cd8b8aa17f3%2Fexo2Black.typeface.json?1490305922150">
+      </a-asset-item>
+      <a-asset-item id="exoItalicFont"
+        src="https://cdn.glitch.com/c719c986-c0c5-48b8-967c-3cd8b8aa17f3%2Fexo2BlackItalic.typeface.json?1490305922725">
+      </a-asset-item>
+      <img id="ocean" src="http://wicomcloud.dsmynas.com:3999/teach/water.jpg">
+      <audio id="music"
+        src="https://cdn.glitch.com/1d1902e8-d0df-4456-80aa-af540491c96a%2FAlternate.mp3?1558448882951"></audio>
+      <audio id="music2"
+        src="https://cdn.glitch.com/1d1902e8-d0df-4456-80aa-af540491c96a%2Fglaxymusic.mp3?1558448863255"></audio>
+      <audio id="click"
+        src="https://cdn.glitch.com/1d1902e8-d0df-4456-80aa-af540491c96a%2Fcoin08.mp3?1558448859528"></audio>
+      <audio id="stage_sound"
+        src="https://cdn.glitch.com/1d1902e8-d0df-4456-80aa-af540491c96a%2Fpowerup05.mp3?1558448860113"></audio>
+      <audio id="change_sound"
+        src="https://cdn.glitch.com/1d1902e8-d0df-4456-80aa-af540491c96a%2Fchange.mp3?1558448859541"></audio>
+    </a-assets>
+
+
+    <a-entity camera="userHeight:30" look-controls cursor="rayOrigin: mouse">
+
+
+      <a-entity position="0 1 -6" rotation="5 0 0">
+
+        <a-entity rotation="0 0 3" position="-5 6.5 0"
+          text-geometry="value:Agility Traning; font: #exoFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12; size: 1; height: 0;"
+          material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #pink;"></a-entity>
+
+        <a-entity id="mode1" rotation="0 0 3" position="-2 4.5 0"
+          text-geometry="value:Mode-1; font: #exoFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12; size: 1; height: 0;"
+          material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #pink;"></a-entity>
+
+        <a-entity id="mode2" rotation="0 0 3" position="-2 3 0"
+          text-geometry="value:Mode-2; font: #exoFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12; size: 1; height: 0;"
+          material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #pink;"></a-entity>
+
+        <a-entity rotation="0 180 5" position="5 5 15"
+          text-geometry="value:Thanks For Playing; font: #exoFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12; size: 1; height: 0;"
+          material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #pink;"></a-entity>
+
+        <a-entity geometry="primitive: plane; width: 100; height: 100;" rotation="-90 0 0"
+          material="src: #grid; repeat: 100 100; transparent: true;metalness:0.6; roughness: 0.4; sphericalEnvMap: #sky;">
+        </a-entity>
+
+        <a-icosahedron id="obj1" color="#ff4d4d" radius="1" position="-3 5 0" rotation="0 360 0" scale="0.5 0.5 0.5">
+          <a-animation attribute="rotation" to="0 0 360" repeat="indefinite" easing="linear" dur="4800"></a-animation>
+        </a-icosahedron>
+
+        <a-icosahedron id="obj2" color="#ff5c33" radius="1" position="-3 3.5 0" rotation="0 360 0" scale="0.5 0.5 0.5">
+          <a-animation attribute="rotation" to="0 0 360" repeat="indefinite" easing="linear" dur="4800"></a-animation>
+        </a-icosahedron>
+
+
+        <a-entity light="color: ffaaff; intensity: 5" position="0 10 0"></a-entity>
+        <a-entity light="color: white; type: ambient;"></a-entity>
+
+        <a-entity id="clicksound" position="0 5 0" sound="src: #click; autoplay: false; volume: 4;"></a-entity>
+        <a-entity id="stagesound" position="0 5 0" sound="src: #stage_sound; autoplay: false; volume: 3;"></a-entity>
+        <a-entity id="changesound" position="0 5 0" sound="src: #change_sound; autoplay: false; volume: 3;"></a-entity>
+        <a-entity id="bgm" position="0 5 0" sound="src: #music; autoplay: true; volume: 5;loop: true;"></a-entity>
+
+      </a-entity>
+
+      <a-sky src="#sky" rotation="0 -90 0"></a-sky>
+      <a-camera id="acamera" position="0 5 0"></a-camera>
+
+    </a-entity>
+
+  </a-scene>
+
+</body>
+
+</html>

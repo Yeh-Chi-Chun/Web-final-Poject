@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Test Agility Traning Game </title>
+  <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+  <script
+    src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
+</head>
+
+<script>
+  var count = 10;
+  var stagenum = 1;
+  var bgmcontrol = 0;
+  var speedvalue = 8000;
+  var mode = 0;
+  var Visible1 = true;
+  var Visible2 = true;
+  var Visible3 = true;
+  var Visible4 = true;
+  var Visible5 = true;
+  var Visible6 = true;
+  var Visible7 = true;
+  var Visible8 = true;
+  var Visible9 = true;
+  var Visible0 = true;
+
+
+  var rankName = [];
+  var rankNum = [];
+  var tag = 0;
+
+
+
+
+  var V6 = false;
+  var V7 = false;
+
+  var message = "; font: #exoItalicFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12; size: 1; height: 0;";
+
+  AFRAME.registerComponent('a-frame-to-html', {
+    init: function () {
+
+      var scene = document.querySelector('a-scene');
+      var BGM = scene.querySelector('#bgm');
+      var b1 = document.getElementById('ball1');
+      var b2 = document.getElementById('ball2');
+      var b3 = document.getElementById('ball3');
+      var b4 = document.getElementById('ball4');
+      var b5 = document.getElementById('ball5');
+      var b6 = document.getElementById('ball6');
+      var b7 = document.getElementById('ball7');
+      var b8 = document.getElementById('ball8');
+      var b9 = document.getElementById('ball9');
+      var b0 = document.getElementById('ball0');
+
+      if (localStorage.length) {
+        for (var i = 0; i < localStorage.length; i++) {
+          if (localStorage.key(i).startsWith("ball-")) {
+            rankName[tag] = localStorage.key(i);
+            rankNum[tag] = localStorage.getItem(rankName[tag]);
+            tag++
+          }
+        }
+      }
+
+
+
+      var box4 = document.getElementById('obj4');
+      var box6 = document.getElementById('obj6');
+      var box7 = document.getElementById('obj7');
+      var stage = document.getElementById('stage');
+      var speed = scene.querySelectorAll('.speed');
+      var speed2 = scene.querySelectorAll('.speed2');
+      var speed6 = scene.querySelectorAll('.speed6');
+      var speed7 = scene.querySelectorAll('.speed7');
+      var Csound = document.querySelector('[sound]');//抓點擊時音效的物件
+      var Stagesound = document.querySelector('#stagesound');//抓進入下一關時音效的物件
+      var changesound = document.querySelector('#changesound');//抓進入下一關時音效的物件
+      Csound.components.sound.stopSound();
+
+      el = this.el;
+
+      this.el.addEventListener('click', (e) => {
+        if (e.srcElement.id == 'ball1') {
+          if (Visible1) {
+            count--;
+            b1.setAttribute("visible", "false");
+            Csound.components.sound.stopSound();
+            Csound.components.sound.playSound();
+          }
+
+          Visible1 = false;
+          console.log(count);
+        }
+        else if (e.srcElement.id == 'ball2') {
+          if (Visible2) {
+            count--;
+            b2.setAttribute("visible", "false");
+            Csound.components.sound.stopSound();
+            Csound.components.sound.playSound();
+          }
+
+          Visible2 = false;
+          console.log(count);
+        }
+        else if (e.srcElement.id == 'ball3') {
+          if (Visible3) {
+            count--;
+            b3.setAttribute("visible", "false");
+            Csound.components.sound.stopSound();
+            Csound.components.sound.playSound();
+          }
+
+          Visible3 = false;
+          console.log(count);
+        }
+        else if (e.srcElement.id == 'ball4') {
+          if (Visible4) {
+            count--;
+            b4.setAttribute("visible", "false");
+            Csound.components.sound.stopSound();
+            Csound.components.sound.playSound();
+          }
+
+          Visible4 = false;
+          console.log(count);
+        }
+        else if (e.srcElement.id == 'ball5') {
+          if (Visible5) {
+            count--;
+            b5.setAttribute("visible", "false");
+            Csound.components.sound.stopSound();
+            Csound.components.sound.playSound();
+          }
+
+          Visible5 = false;
+          console.log(count);
+        }
+        else if (e.srcElement.id == 'ball6') {
+          if (Visible6) {
+            count--;
+            b6.setAttribute("visible", "false");
+            Csound.components.sound.stopSound();
+            Csound.components.sound.playSound();
+          }
+
+          Visible6 = false;
+          console.log(count);
+        }
+        else if (e.srcElement.id == 'ball7') {
+          if (Visible7) {
+            count--;
+            b7.setAttribute("visible", "false");
+            Csound.components.sound.stopSound();
+            Csound.components.sound.playSound();
+          }
+
+          Visible7 = false;
+          console.log(count);
+        }
+        else if (e.srcElement.id == 'ball8') {
+          if (Visible8) {
+            count--;
+            b8.setAttribute("visible", "false");
+            Csound.components.sound.stopSound();
+            Csound.components.sound.playSound();
+          }
+
+          Visible8 = false;
+          console.log(count);
+        }
+        else if (e.srcElement.id == 'ball9') {
+          if (Visible9) {
+            count--;
+            b9.setAttribute("visible", "false");
+            Csound.components.sound.stopSound();
+            Csound.components.sound.playSound();
+          }
+
+          Visible9 = false;
+          console.log(count);
+        }
+        else if (e.srcElement.id == 'ball0') {
+          if (Visible0) {
+            count--;
+            b0.setAttribute("visible", "false");
+            Csound.components.sound.stopSound();
+            Csound.components.sound.playSound();
+          }
+
+          Visible0 = false;
+          console.log(count);
+        }
+        else if (e.srcElement.id == 'restart') {
+          document.getElementById("restart").setAttribute("visible", "false");
+          stageInit();
+        }
+
+
+
+
+
+        else if (e.srcElement.id == 'obj6') {
+          if (V6) {
+            count--;
+            box6.setAttribute("visible", "false");
+            Csound.components.sound.stopSound();
+            Csound.components.sound.playSound();
+          }
+
+          V6 = false;
+          console.log(count);
+        }
+        else if (e.srcElement.id == 'obj7') {
+          if (V7) {
+            count--;
+            box7.setAttribute("visible", "false");
+            Csound.components.sound.stopSound();
+            Csound.components.sound.playSound();
+          }
+
+          V7 = false;
+          console.log(count);
+        }
+        else if (e.srcElement.id == 'obj4') {
+          if (bgmcontrol == 0) {
+            bgmcontrol = 1;
+            changesound.components.sound.stopSound();
+            changesound.components.sound.playSound();
+            BGM.setAttribute("sound", "src: #music2; autoplay: true; volume: 7;loop: true;");
+          }
+          else {
+            bgmcontrol = 0;
+            changesound.components.sound.stopSound();
+            changesound.components.sound.playSound();
+            BGM.setAttribute("sound", "src: #music; autoplay: true; volume: 5;loop: true;");
+          }
+        }
+        else if (e.srcElement.id == 'obj5') {
+          if (mode == 0) {
+            //nextStage();
+            mode = 1;
+            count = 10;
+            stagenum = 1;
+            speedvalue = 8000;
+            Visible1 = true;
+            Visible2 = true;
+            Visible3 = true;
+            Visible4 = true;
+            Visible5 = true;
+            Visible6 = true;
+            Visible7 = true;
+            Visible8 = true;
+            Visible9 = true;
+            Visible0 = true;
+
+
+            V6 = true;
+            V7 = true;
+            b1.setAttribute("visible", "true");
+            b2.setAttribute("visible", "true");
+            b3.setAttribute("visible", "true");
+            b4.setAttribute("visible", "true");
+            b5.setAttribute("visible", "true");
+            b6.setAttribute("visible", "true");
+            b7.setAttribute("visible", "true");
+            b8.setAttribute("visible", "true");
+            b9.setAttribute("visible", "true");
+            b0.setAttribute("visible", "true");
+
+
+
+
+            box6.setAttribute("visible", "true");
+            box7.setAttribute("visible", "true");
+            changesound.components.sound.stopSound();
+            changesound.components.sound.playSound();
+            //stage.setAttribute("text-geometry", "value:stage: " + stagenum + message);
+          }
+          else {
+            //nextStage2();
+            mode = 0;
+            count = 10;
+            stagenum = 1;
+            speedvalue = 8000;
+            Visible1 = true;
+            Visible2 = true;
+            Visible3 = true;
+            V6 = false;
+            V7 = false;
+            b1.setAttribute("visible", "true");
+            b2.setAttribute("visible", "true");
+            b3.setAttribute("visible", "true");
+            b4.setAttribute("visible", "true");
+            b5.setAttribute("visible", "true");
+            b6.setAttribute("visible", "true");
+            b7.setAttribute("visible", "true");
+            b8.setAttribute("visible", "true");
+            b9.setAttribute("visible", "true");
+            b0.setAttribute("visible", "true");
+
+
+
+
+            box6.setAttribute("visible", "false");
+            box7.setAttribute("visible", "false");
+            changesound.components.sound.stopSound();
+            changesound.components.sound.playSound();
+            //stage.setAttribute("text-geometry", "value:stage: " + stagenum + message);
+          }
+        }
+        if (count == 0) {
+          if (mode == 0) {
+            count = 10;
+            //stagenum++;
+            //nextStage();
+            //delay(1);
+            end();
+            Stagesound.components.sound.stopSound();
+            Stagesound.components.sound.playSound();
+          }
+          else {
+            count = 10;
+            stagenum++;
+            // nextStage2();
+            Stagesound.components.sound.stopSound();
+            Stagesound.components.sound.playSound();
+          }
+        }
+      })
+    }
+  });
+
+  var sub = 1500;
+
+  function nextStage() {
+
+    var scene = document.querySelector('a-scene')
+    var b1 = document.getElementById('ball1')
+    var b2 = document.getElementById('ball2')
+    var b3 = document.getElementById('ball3')
+    var b4 = document.getElementById('ball4')
+    var b5 = document.getElementById('ball5')
+    var b6 = document.getElementById('ball6')
+    var b7 = document.getElementById('ball7')
+    var b8 = document.getElementById('ball8')
+    var b9 = document.getElementById('ball9')
+    var b0 = document.getElementById('ball0')
+
+
+
+    var stage = document.getElementById('stage')
+    var speed = scene.querySelectorAll('.speed')
+    var speed2 = scene.querySelectorAll('.speed2')
+    var speed3 = scene.querySelectorAll('.speed3')
+
+    if (speedvalue > 2000) {
+      speedvalue -= sub;
+      if (sub > 500) sub -= 200;
+    }
+    else if (speedvalue <= 2000 && speedvalue > 1000) {
+      speedvalue -= 100;
+    }
+    else if (speedvalue <= 1000 && speedvalue > 100) {
+      speedvalue -= 50;
+    }
+    else {
+      speedvalue = 100;
+    }
+
+    console.log(speedvalue);
+    //stage.setAttribute("text-geometry", "value:stage: " + stagenum + message)
+    speed[0].setAttribute("dur", speedvalue)
+    speed[1].setAttribute("dur", speedvalue)
+    speed[1].setAttribute("delay", speedvalue)
+    speed2[0].setAttribute("dur", speedvalue)
+    speed3[0].setAttribute("dur", speedvalue)
+    speed3[1].setAttribute("dur", speedvalue)
+    speed3[1].setAttribute("delay", speedvalue)
+
+    window.setTimeout(stageInit, 500);
+  }
+
+
+
+  // function nextStage2() {
+
+  //   var scene = document.querySelector('a-scene')
+  //   let box1 = document.getElementById('obj1')
+  //   let box2 = document.getElementById('obj2')
+  //   let box3 = document.getElementById('obj3')
+  //   let stage = document.getElementById('stage')
+  //   var speed = scene.querySelectorAll('.speed')
+  //   var speed2 = scene.querySelectorAll('.speed2')
+  //   var speed3 = scene.querySelectorAll('.speed3')
+  //   var speed6 = scene.querySelectorAll('.speed6')
+  //   var speed7 = scene.querySelectorAll('.speed7')
+
+  //   if (speedvalue > 2000) {
+  //     speedvalue -= sub;
+  //     if (sub > 500) sub -= 200;
+  //   }
+  //   else if (speedvalue <= 2000 && speedvalue > 1000) {
+  //     speedvalue -= 100;
+  //   }
+  //   else if (speedvalue <= 1000 && speedvalue > 100) {
+  //     speedvalue -= 50;
+  //   }
+  //   else {
+  //     speedvalue = 100;
+  //   }
+
+  //   console.log(speedvalue);
+  //   stage.setAttribute("text-geometry", "value:stage: " + stagenum + message)
+  //   speed[0].setAttribute("dur", speedvalue)
+  //   speed[1].setAttribute("dur", speedvalue)
+  //   speed[1].setAttribute("delay", speedvalue)
+  //   speed2[0].setAttribute("dur", speedvalue)
+  //   speed3[0].setAttribute("dur", speedvalue)
+  //   speed3[1].setAttribute("dur", speedvalue)
+  //   speed3[1].setAttribute("delay", speedvalue)
+  //   speed6[0].setAttribute("dur", speedvalue)
+  //   speed7[0].setAttribute("dur", speedvalue)
+
+  //   window.setTimeout(stageInit2, 500);
+  // }
+
+  function stageInit() {
+    count = 10;
+
+    t = 0;
+    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+    ti = setInterval(function () {
+      timer = document.getElementById("clock");
+      t++;
+      timer.setAttribute("text-geometry", "value:time:" + t);
+    }, 1000);
+
+    let b1 = document.getElementById('ball1')
+    let b2 = document.getElementById('ball2')
+    let b3 = document.getElementById('ball3')
+    let b4 = document.getElementById('ball4')
+    let b5 = document.getElementById('ball5')
+    let b6 = document.getElementById('ball6')
+    let b7 = document.getElementById('ball7')
+    let b8 = document.getElementById('ball8')
+    let b9 = document.getElementById('ball9')
+    let b0 = document.getElementById('ball0')
+
+    let stage = document.getElementById('stage')
+
+    b1.setAttribute("position", "-10 0 -50");
+    b2.setAttribute("position", "0 1 7");
+    b3.setAttribute("position", "10 0 -50");
+    b4.setAttribute("position", "10 0 -50");
+    b5.setAttribute("position", "0 3 7");
+    b6.setAttribute("position", "0 3 7");
+    b7.setAttribute("position", "0 3 7");
+    b8.setAttribute("position", "-10 0 -50");
+    b9.setAttribute("position", "-5 1 -10");
+    b0.setAttribute("position", "5 1 -10");
+
+
+
+    b1.setAttribute("visible", "true");
+    b2.setAttribute("visible", "true");
+    b3.setAttribute("visible", "true");
+    b4.setAttribute("visible", "true");
+    b5.setAttribute("visible", "true");
+    b6.setAttribute("visible", "true");
+    b7.setAttribute("visible", "true");
+    b8.setAttribute("visible", "true");
+    b9.setAttribute("visible", "true");
+    b0.setAttribute("visible", "true");
+    Visible1 = true;
+    Visible2 = true;
+    Visible3 = true;
+    Visible4 = true;
+    Visible5 = true;
+    Visible6 = true;
+    Visible7 = true;
+    Visible8 = true;
+    Visible9 = true;
+    Visible0 = true;
+
+
+  }
+
+  // function stageInit2() {
+  //   let box1 = document.getElementById('obj1')
+  //   let box2 = document.getElementById('obj2')
+  //   let box3 = document.getElementById('obj3')
+  //   let box6 = document.getElementById('obj6')
+  //   let box7 = document.getElementById('obj7')
+  //   let stage = document.getElementById('stage')
+
+  //   box1.setAttribute("visible", "true");
+  //   box2.setAttribute("visible", "true");
+  //   box3.setAttribute("visible", "true");
+  //   box6.setAttribute("visible", "true");
+  //   box7.setAttribute("visible", "true");
+  //   Visible1 = true;
+  //   Visible2 = true;
+  //   Visible3 = true;
+  //   Visible6 = true;
+  //   Visible7 = true;
+  // }
+
+  function bubbleSort() {
+    var len = rankNum.length;
+    for (var i = 0; i < len; i++) {
+      for (var j = 0; j < len - 1 - i; j++) {
+        if (parseInt(rankNum[j]) > parseInt(rankNum[j + 1])) {  // 相鄰元素兩兩對比
+          var temp = rankNum[j + 1];  // 元素交換
+          rankNum[j + 1] = rankNum[j];
+          rankNum[j] = temp;
+
+          var temp2 = rankName[j + 1];  // 元素交換
+          rankName[j + 1] = rankName[j];
+          rankName[j] = temp2;
+
+        }
+      }
+    }
+  }
+
+  function show() {
+    var mes = "";
+    var rk = document.getElementById("rk");
+    for (var i = 0; i < rankNum.length; i++) {
+      mes += rankName[i].substr(5) + ": " + rankNum[i] + "second\n";
+    }
+    //window.alert(mes);
+
+    rk.setAttribute("text-geometry", "value:     rank\n " + mes);
+  }
+
+
+  function end() {
+    clearInterval(ti);
+
+    console.log(rankNum[0]);
+    console.log(rankNum[1]);
+    console.log(rankNum[2]);
+    console.log(rankName[0]);
+    console.log(rankName[1]);
+    console.log(rankName[2]);
+
+    console.log(rankNum.length);
+    console.log(rankName.length);
+    bubbleSort();
+
+    console.log(rankNum[0]);
+    console.log(rankNum[1]);
+    console.log(rankNum[2]);
+    console.log(rankName[0]);
+    console.log(rankName[1]);
+    console.log(rankName[2]);
+    console.log(t);
+    console.log(rankNum[rankNum.length - 1]);
+
+    if (rankNum.length < 3) {  //新的名次出來
+
+      while (1) {
+        var name = prompt("请输入您的名字(英文):");
+        var pattern = new RegExp("[A-Za-z0-9]+");
+        if (pattern.test(name) && name) {
+          break;
+        }
+        else {
+          window.alert("要英文!!!!!");
+        }
+      }
+
+
+      rankName[rankNum.length] = "ball-" + name;
+      rankNum[rankNum.length] = t;
+      localStorage.setItem("ball-" + name, t);
+    }
+    else {
+      if (parseInt(rankNum[rankNum.length - 1]) > t) {
+        localStorage.removeItem(rankName[rankNum.length - 1]);
+
+        while (1) {
+          var name = prompt("请输入您的名字(英文):");
+          var pattern = new RegExp("[A-Za-z0-9]+");
+          if (pattern.test(name) && name) {
+            break;
+          }
+          else {
+            window.alert("要英文!!!!!");
+          }
+        }
+
+        rankName[rankNum.length - 1] = "ball-" + name;
+        rankNum[rankNum.length - 1] = t;
+        localStorage.setItem(rankName[rankNum.length - 1], t);
+      }
+    }
+
+    bubbleSort();
+    console.log(rankNum[0]);
+    console.log(rankNum[1]);
+    console.log(rankNum[2]);
+    console.log(rankName[0]);
+    console.log(rankName[1]);
+    console.log(rankName[2]);
+
+    show();
+    document.getElementById("restart").setAttribute("visible", "true");
+  }
+
+  var t = 0;
+
+
+  ti = setInterval(function () {
+    timer = document.getElementById("clock");
+    t++;
+    timer.setAttribute("text-geometry", "value:time:" + t);
+  }, 1000);
+</script>
+
+
+<body>
+
+  <a-scene a-frame-to-html>
+    <a-assets>
+      <img id="pink" src="https://img.gs/bbdkhfbzkk/stretch/http://i.imgur.com/1hyyIUi.jpg" crossorigin="anonymous" />
+      <img src="https://img.gs/bbdkhfbzkk/stretch/https://i.imgur.com/25P1geh.png" id="grid" crossorigin="anonymous">
+      <img src="https://img.gs/bbdkhfbzkk/2048x1024,stretch/http://i.imgur.com/WMNH2OF.jpg" id="chrome"
+        crossorigin="anonymous">
+      <img id="sky" src="https://img.gs/bbdkhfbzkk/2048x2048,stretch/http://i.imgur.com/WqlqEkq.jpg"
+        crossorigin="anonymous" />
+      <a-asset-item id="dawningFont"
+        src="https://cdn.glitch.com/c719c986-c0c5-48b8-967c-3cd8b8aa17f3%2FdawningOfANewDayRegular.typeface.json?1490305922844">
+      </a-asset-item>
+      <a-asset-item id="exoFont"
+        src="https://cdn.glitch.com/c719c986-c0c5-48b8-967c-3cd8b8aa17f3%2Fexo2Black.typeface.json?1490305922150">
+      </a-asset-item>
+      <a-asset-item id="exoItalicFont"
+        src="https://cdn.glitch.com/c719c986-c0c5-48b8-967c-3cd8b8aa17f3%2Fexo2BlackItalic.typeface.json?1490305922725">
+      </a-asset-item>
+      <img id="ocean" src="http://wicomcloud.dsmynas.com:3999/teach/water.jpg">
+      <audio id="music"
+        src="https://cdn.glitch.com/1d1902e8-d0df-4456-80aa-af540491c96a%2FAlternate.mp3?1558448882951"></audio>
+      <audio id="music2"
+        src="https://cdn.glitch.com/1d1902e8-d0df-4456-80aa-af540491c96a%2Fglaxymusic.mp3?1558448863255"></audio>
+      <audio id="click"
+        src="https://cdn.glitch.com/1d1902e8-d0df-4456-80aa-af540491c96a%2Fcoin08.mp3?1558448859528"></audio>
+      <audio id="stage_sound"
+        src="https://cdn.glitch.com/1d1902e8-d0df-4456-80aa-af540491c96a%2Fpowerup05.mp3?1558448860113"></audio>
+      <audio id="change_sound"
+        src="https://cdn.glitch.com/1d1902e8-d0df-4456-80aa-af540491c96a%2Fchange.mp3?1558448859541"></audio>
+    </a-assets>
+
+
+    <a-entity camera="userHeight:30" look-controls cursor="rayOrigin: mouse">
+
+
+      <a-entity position="0 1 -6" rotation="5 0 0">
+
+        <a-entity rotation="0 0 0" position="-1.5 6.5 0"
+          text-geometry="value:Trial; font: #exoFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12; size: 1; height: 0;"
+          material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #pink;"></a-entity>
+
+        <a-entity id="clock" rotation="0 0 0" position="-2.5 5 0"
+          text-geometry="value:; font: #exoFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12; size: 1.2; height: 0;"
+          material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #pink;"></a-entity>
+
+        <a-entity id="stage" rotation="0 0 5" position="-5 5 0"
+          text-geometry=" font: #exoFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12; size: 1; height: 0;"
+          material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #pink;"></a-entity>
+
+        <a-entity id="rk" rotation="0 180 0" position="30 20 50"
+          text-geometry="value:; font: #exoFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12; size: 5; height: 0;"
+          material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #pink;"></a-entity>
+
+        <a-entity geometry="primitive: plane; width: 100; height: 100;" rotation="-90 0 0"
+          material="src: #grid; repeat: 100 100; transparent: true;metalness:0.6; roughness: 0.4; sphericalEnvMap: #sky;">
+        </a-entity>
+
+
+        <a-entity light="color: ffaaff; intensity: 5" position="0 10 0"></a-entity>
+        <a-entity light="color: white; type: ambient;"></a-entity>
+
+        <a-icosahedron id="ball1" color="#D4C1EE" radius="2" position="-10 0 -50" rotation="0 360 0"
+          scale="0.5 0.5 0.5">
+          <a-animation attribute="rotation" to="0 0 0" repeat="indefinite" easing="linear" dur="4000"></a-animation>
+          <a-animation class="speed" attribute="position" to="-2 1 7" repeat="indefinite" easing="linear" dur="8000">
+          </a-animation>
+          <a-animation class="speed" attribute="position" from="-2 1 7" to="-10 0 -50" repeat="indefinite"
+            easing="linear" dur="8000" delay="8000"></a-animation>
+        </a-icosahedron>
+
+
+        <a-icosahedron id="ball2" color="#DDA8F5" radius="2" position="0 1 7" rotation="0 360 0" scale="0.5 0.5 0.5">
+          <a-animation attribute="rotation" to="0 0 0" repeat="indefinite" easing="linear" dur="1000"></a-animation>
+          <a-animation class="speed2" attribute="position" from="0 1 7" to="0 0 -50" dir="alternate" repeat="indefinite"
+            easing="linear" dur="8000"></a-animation>
+        </a-icosahedron>
+
+        <a-icosahedron id="ball3" color="#FA86FF" radius="2" position="10 0 -50" rotation="0 360 0" scale="0.5 0.5 0.5">
+          <a-animation attribute="rotation" to="0 0 0" repeat="indefinite" easing="linear" dur="900"></a-animation>
+          <a-animation class="speed3" attribute="position" to="2 1 7" repeat="indefinite" easing="linear" dur="8000">
+          </a-animation>
+          <a-animation class="speed3" attribute="position" from="2 1 7" to="10 0 -50" repeat="indefinite"
+            easing="linear" dur="8000" delay="8000"></a-animation>
+        </a-icosahedron>
+
+        <a-icosahedron id="ball4" color="#FA86FF" radius="2" position="10 0 -50" rotation="0 360 0" scale="0.5 0.5 0.5">
+          <a-animation attribute="rotation" to="0 0 0" repeat="indefinite" easing="linear" dur="2600"></a-animation>
+          <a-animation class="speed3" attribute="position" to="4 5 7" repeat="indefinite" easing="linear" dur="8000">
+          </a-animation>
+          <a-animation class="speed3" attribute="position" from="4 5 10" to="20 0 -50" repeat="indefinite"
+            easing="linear" dur="8000" delay="8000"></a-animation>
+        </a-icosahedron>
+
+        <a-icosahedron id="ball5" color="#DDA8F5" radius="2" position="0 3 7" rotation="0 360 0" scale="0.5 0.5 0.5">
+          <a-animation attribute="rotation" to="0 0 0" repeat="indefinite" easing="linear" dur="1800"></a-animation>
+          <a-animation class="speed2" attribute="position" from="0 3 7" to="0 3 -50" dir="alternate" repeat="indefinite"
+            easing="linear" dur="8000"></a-animation>
+        </a-icosahedron>
+
+        <a-icosahedron id="ball6" color="#DDA8F5" radius="2" position="0 3 7" rotation="0 360 0" scale="0.5 0.5 0.5">
+          <a-animation attribute="rotation" to="0 0 0" repeat="indefinite" easing="linear" dur="3200"></a-animation>
+          <a-animation class="speed2" attribute="position" from="2 3 7" to="2 3 -50" dir="alternate" repeat="indefinite"
+            easing="linear" dur="8000"></a-animation>
+        </a-icosahedron>
+
+        <a-icosahedron id="ball7" color="#DDA8F5" radius="2" position="0 3 7" rotation="0 360 0" scale="0.5 0.5 0.5">
+          <a-animation attribute="rotation" to="0 0 0" repeat="indefinite" easing="linear" dur="1500"></a-animation>
+          <a-animation class="speed2" attribute="position" from="-2 3 7" to="-2 3 -50" dir="alternate"
+            repeat="indefinite" easing="linear" dur="8000"></a-animation>
+        </a-icosahedron>
+
+        <a-icosahedron id="ball8" color="#FA86FF" radius="2" position="-10 0 -50" rotation="0 360 0"
+          scale="0.5 0.5 0.5">
+          <a-animation attribute="rotation" to="0 0 0" repeat="indefinite" easing="linear" dur="800"></a-animation>
+          <a-animation class="speed3" attribute="position" to="-4 5 7" repeat="indefinite" easing="linear" dur="8000">
+          </a-animation>
+          <a-animation class="speed3" attribute="position" from="-5 -3 -4" to="-20 0 -50" repeat="indefinite"
+            easing="linear" dur="8000" delay="8000"></a-animation>
+        </a-icosahedron>
+
+        <a-icosahedron id="restart" color="#ff5c33" radius="1" position="0 4 0" rotation="0 360 0" scale="0.5 0.5 0.5"
+          visible="false">
+          <a-animation attribute="rotation" to="0 0 360" repeat="indefinite" easing="linear" dur="4800"></a-animation>
+        </a-icosahedron>
+
+        <!-- <a-icosahedron id="ball9" color="#D4C1EE" radius="2" position="-10 3 -50" rotation="0 360 0"
+        scale="0.5 0.5 0.5">
+        <a-animation attribute="rotation" to="0 0 0" repeat="indefinite" easing="linear" dur="2400"></a-animation>
+        <a-animation class="speed" attribute="position" to="-2 3 7" repeat="indefinite" easing="linear" dur="8000">
+        </a-animation>
+        <a-animation class="speed" attribute="position" from="-2 3 7" to="-10 3 -50" repeat="indefinite"
+          easing="linear" dur="8000" delay="8000"></a-animation>
+      </a-icosahedron>
+
+      <a-icosahedron id="ball0" color="#FA86FF" radius="2" position="10 3 -50" rotation="0 360 0" scale="0.5 0.5 0.5">
+        <a-animation attribute="rotation" to="0 0 0" repeat="indefinite" easing="linear" dur="2400"></a-animation>
+        <a-animation class="speed3" attribute="position" to="2 3 7" repeat="indefinite" easing="linear" dur="8000">
+        </a-animation>
+        <a-animation class="speed3" attribute="position" from="2 3 7" to="10 3 -50" repeat="indefinite"
+          easing="linear" dur="8000" delay="8000"></a-animation>
+      </a-icosahedron> -->
+
+
+
+
+
+
+        <a-icosahedron id="obj4" color="#ff4d4d" radius="1" position="5 2 15" rotation="0 360 0" scale="0.5 0.5 0.5">
+          <a-animation attribute="rotation" to="0 0 360" repeat="indefinite" easing="linear" dur="4800"></a-animation>
+        </a-icosahedron>
+
+        <a-icosahedron id="obj5" color="#ff5c33" radius="1" position="0 2 15" rotation="0 360 0" scale="0.5 0.5 0.5">
+          <a-animation attribute="rotation" to="0 0 360" repeat="indefinite" easing="linear" dur="4800"></a-animation>
+        </a-icosahedron>
+
+        <a-icosahedron id="ball9" color="#d633ff" radius="2" position="-5 1 -10" rotation="0 360 0" scale="0.5 0.5 0.5"
+          visible="true">
+          <a-animation attribute="rotation" to="0 0 0" repeat="indefinite" easing="linear" dur="1600"></a-animation>
+          <a-animation class="speed6" attribute="position" from="-5 1 -10" to="-30 1 -10" dir="alternate"
+            repeat="indefinite" easing="linear" dur="8000"></a-animation>
+        </a-icosahedron>
+
+        <a-icosahedron id="ball0" color="#d633ff" radius="2" position="5 1 -10" rotation="0 360 0" scale="0.5 0.5 0.5"
+          visible="true">
+          <a-animation attribute="rotation" to="0 0 0" repeat="indefinite" easing="linear" dur="1200"></a-animation>
+          <a-animation class="speed7" attribute="position" from="5 1 -10" to="30 1 -10" dir="alternate"
+            repeat="indefinite" easing="linear" dur="8000"></a-animation>
+        </a-icosahedron>
+
+        <a-entity id="clicksound" position="0 5 0" sound="src: #click; autoplay: false; volume: 4;"></a-entity>
+        <a-entity id="stagesound" position="0 5 0" sound="src: #stage_sound; autoplay: false; volume: 3;"></a-entity>
+        <a-entity id="changesound" position="0 5 0" sound="src: #change_sound; autoplay: false; volume: 3;"></a-entity>
+        <a-entity id="bgm" position="0 5 0" sound="src: #music; autoplay: true; volume: 5;loop: true;"></a-entity>
+
+      </a-entity>
+
+      <a-sky src="#sky" rotation="0 -90 0"></a-sky>
+      <a-camera id="acamera" position="0 5 0"></a-camera>
+
+    </a-entity>
+
+  </a-scene>
+
+
+
+</body>
+
+</html>
