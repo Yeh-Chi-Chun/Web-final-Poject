@@ -57,7 +57,7 @@
           text-geometry="value:Stage: 1; font: #exoFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12; size: 1; height: 0;"
           material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #pink;"></a-entity>
 
-        <a-entity id="rk" rotation="0 180 5" position="7 8 15"
+        <a-entity id="rk" rotation="0 180 2" position="7 8 15"
           text-geometry="value:Thanks For Playing; font: #exoFont; bevelEnabled: true; bevelSize: 0.05; bevelThickness: 0.05; curveSegments: 12; size: 1; height: 0;"
           material="color:lavenderblush; metalness:1; roughness: 0; sphericalEnvMap: #pink;"></a-entity>
 
@@ -287,7 +287,7 @@
             changesound.components.sound.stopSound();
             changesound.components.sound.playSound();
             stage.setAttribute("text-geometry", "value:Stage: " + stagenum + message);
-            timeObj.setAttribute("text-geometry", "value:Time left :" + time + message); 
+            timeObj.setAttribute("text-geometry", "value:Time left :" + time + message);
           }
           else {
             mode = 0;
@@ -308,7 +308,7 @@
             changesound.components.sound.stopSound();
             changesound.components.sound.playSound();
             stage.setAttribute("text-geometry", "value:Stage: " + stagenum + message);
-            timeObj.setAttribute("text-geometry", "value:Time left :" + time + message);        
+            timeObj.setAttribute("text-geometry", "value:Time left :" + time + message);
           }
         }
         if (count == 0) {
@@ -480,10 +480,10 @@
         timeObj.setAttribute("text-geometry", "value:Time left :" + time + message);
         console.log(time);
       }
-      else {
+      else if(time == 0){
         timeObj.setAttribute("text-geometry", "value:Game Over" + message);
         timeObj.setAttribute("text-geometry", "value:Game Over" + message);
-
+        time--;
         box1.setAttribute("visible", "false");
         box2.setAttribute("visible", "false");
         box3.setAttribute("visible", "false");
@@ -506,7 +506,7 @@
     var mes = "";
     var rk = document.getElementById("rk");
     for (var i = 0; i < rankNum.length; i++) {
-      mes += rankName[i].substr(6) + " : " + rankNum[i] + " stage\n";
+      mes += rankName[i].substr(6) + " : " + rankNum[i] + " stages\n";
     }
 
     rk.setAttribute("text-geometry", "value:     Rank\n" + mes);
@@ -517,26 +517,7 @@
 
     t = stagenum;
 
-
-    console.log(rankNum[0]);
-    console.log(rankNum[1]);
-    console.log(rankNum[2]);
-    console.log(rankName[0]);
-    console.log(rankName[1]);
-    console.log(rankName[2]);
-
-    console.log(rankNum.length);
-    console.log(rankName.length);
     bubbleSort();
-
-    console.log(rankNum[0]);
-    console.log(rankNum[1]);
-    console.log(rankNum[2]);
-    console.log(rankName[0]);
-    console.log(rankName[1]);
-    console.log(rankName[2]);
-    console.log(t);
-    console.log(rankNum[rankNum.length - 1]);
 
     if (rankNum.length < 3) {  //新的名次出來
       while (1) {
@@ -549,7 +530,7 @@
           window.alert("要英文不要國語~ 2020/1/11 回家投票!!!!!");
         }
       }
-
+      console.log("wwwww1")
 
       rankName[rankNum.length] = "ball2-" + name;
       rankNum[rankNum.length] = t;
@@ -569,7 +550,8 @@
             window.alert("要英文不要國語~ 2020/1/11 回家投票!!!!!");
           }
         }
-
+        
+        console.log("wwwww2")
         rankName[rankNum.length - 1] = "ball2-" + name;
         rankNum[rankNum.length - 1] = t;
         localStorage.setItem(rankName[rankNum.length - 1], t);
@@ -578,13 +560,7 @@
     }
 
     bubbleSort();
-    console.log(rankNum[0]);
-    console.log(rankNum[1]);
-    console.log(rankNum[2]);
-    console.log(rankName[0]);
-    console.log(rankName[1]);
-    console.log(rankName[2]);
-
+    
     show();
   }
 
